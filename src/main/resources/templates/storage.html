@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Storage</title>
-<!--    <link rel="stylesheet" th:href="@{/css/style.css}">-->
+<head th:replace="fragments :: head">
 </head>
 <body>
-    <h1>Storage</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Quantity</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each=" products: ${products}">
-            <td th:text="${products.prodId}"></td>
-            <td th:text="${products.prodName}"></td>
-            <td th:text="${products.prodQuantity}"></td>
-        </tr>
-        </tbody>
-
-    </table>
+    <div class="container">
+        <div th:replace="fragments :: menu"></div>
+        <h1>Storage</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Quantity</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each=" products: ${products}" scope="row">
+                <td th:text="${products.prodId}"></td>
+                <td th:text="${products.prodName}"></td>
+                <td th:text="${products.prodQuantity}"></td>
+                <td>
+                    <button th:href="@{/edit/{id}(id = products.prodId)}" class="btn btn-primary">Edit</button>
+                    <button th:href="@{/delete/{id}(id = products.prodId)}" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

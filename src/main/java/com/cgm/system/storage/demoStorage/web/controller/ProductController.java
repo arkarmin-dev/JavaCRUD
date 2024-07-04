@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -23,11 +20,6 @@ public class ProductController {
     @Autowired
     private ProductServiceImpl productService;
 
-    @GetMapping("/storage")
-    public String storagePage() {
-        return "storage";
-    }
-
     //CREATE
     @GetMapping("/addProductForm")
     public ModelAndView addProductForm() {
@@ -35,6 +27,7 @@ public class ProductController {
         ModelAndView model = new ModelAndView();
         model.setViewName("/addProductForm");
         model.addObject("productForm", productForm);
+        model.addObject("metaTitle", "Add Product | DemoStorage");
         return model;
     }
 
@@ -45,11 +38,20 @@ public class ProductController {
     }
 
     //READ
-    @PostMapping("storage")
-    public String getProducts(Model model) {
+    @GetMapping("/storage")
+    public String storagePage(Model model) {
         List<Product> products = productService.getProducts();
         model.addAttribute("products", products);
         return "storage";
+    }
+
+    //UPDATE
+    @GetMapping("/edit/{id}")
+    public String editProductForm(@PathVariable Long prodId, Model model) {
+        Product product = productService.getProductById(prodId);
+        model.addAttribute("product", product);
+        model.addAttribute("metaTitle", "Edit Product");
+        return "editProductForm";
     }
 
 }

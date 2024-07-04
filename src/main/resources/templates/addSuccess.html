@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>added Successfully</title>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments:: head">
 </head>
 <body>
-    <p>Product added Successfully.</p>
+    <div class="container mt-auto">
+        <p>Product added Successfully.</p>
+        <a class="btn btn-success" href="addProductForm">Back</a>
+    </div>
 </body>
 </html>

@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Product</title>
+<head th:replace="fragments :: head">
 </head>
 <body>
-    <h1>Add Product</h1>
-    <form th:action="@{addSuccess}" method="post" th:object="${productForm}">
-        <div>
-            <label>Enter Product Name: </label>
-            <input type="text" th:field="*{prodName}" name="prodName">
-        </div>
-        <div>
-            <label>Enter Product Quantity: </label>
-            <input type="text" th:field="*{prodQuantity}" name="prodQuantity">
-        </div>
-        <div>
-            <button type="sumit">Submit</button>
-        </div>
-    </form>
-
+    <div class="container">
+        <div th:replace="fragments :: menu"></div>
+        <h1>Add Product</h1>
+        <form th:action="@{addSuccess}" method="post" th:object="${productForm}">
+            <div>
+                <label>Enter Product Name: </label>
+                <input type="text" th:field="*{prodName}" name="prodName" class="form-control">
+            </div>
+            <div class="my-3">
+                <label>Enter Product Quantity: </label>
+                <input type="text" th:field="*{prodQuantity}" name="prodQuantity" class="form-control">
+            </div>
+            <div>
+                <button type="sumit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

@@ -15,6 +15,7 @@ public class ProductServiceImpl implements ProductService{
     @Autowired
     private ProductDAO prodDB;
 
+    @Override
     public List<Product> getProducts(){
         return prodDB.findAll();
     }
@@ -24,4 +25,9 @@ public class ProductServiceImpl implements ProductService{
         Product product = new Product(productForm);
         this.prodDB.save(product);
     }
+
+//    @Override
+//    public Product getProductById(Long id) {
+//        return ProductDAO.findById(id).orElse(null);
+//    }
 }

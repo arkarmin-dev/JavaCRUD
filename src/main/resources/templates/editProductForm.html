@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments:: head">
+</head>
+<body>
+    <div class="container">
+        <div th:replace="fragments:: menu"></div>
+        <h2>Edit Product</h2>
+        <form th:action="@{editSuccess}" method="post">
+
+        </form>
+    </div>
+</body>
+</html>

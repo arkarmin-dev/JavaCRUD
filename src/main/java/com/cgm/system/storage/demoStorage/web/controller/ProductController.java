@@ -46,12 +46,12 @@ public class ProductController {
     }
 
     //UPDATE
-    @GetMapping("/edit/{id}")
-    public String editProductForm(@PathVariable Long prodId, Model model) {
-        Product product = productService.getProductById(prodId);
-        model.addAttribute("product", product);
-        model.addAttribute("metaTitle", "Edit Product");
-        return "editProductForm";
-    }
+//    @GetMapping("/edit/{id}")
+//    public String editProductForm(@PathVariable Long prodId, Model model) {
+//        Product product = productService.getProductById(prodId);
+//        model.addAttribute("product", product);
+//        model.addAttribute("metaTitle", "Edit Product");
+//        return "editProductForm";
+//    }
 
 }
